@@ -5,10 +5,46 @@
 
     <title>Family Tree</title>
     <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" src="./src/index.js"></script>
   </head>
 
   <body>
     <main id="family-tree"></main>
-    <script></script>
+    <script type="text/javascript">
+      let tree = {
+        0: {
+          4: {
+            1: "",
+            2: "",
+            3: "",
+          },
+          10: { 11: "" },
+        },
+      };
+
+      let treeParams = {
+        0: { name: null },
+        1: { name: "Bart" },
+        2: { name: "Lisa" },
+        3: { name: "Maggie" },
+        4: { name: "Homer" },
+        5: { name: "Herb" },
+        6: { name: "Marge" },
+        7: { name: "Patty" },
+        8: { name: "Selma" },
+        9: { name: "Ling" },
+        10: { name: "Nediana" },
+        11: { name: "Ned" },
+        12: { name: "Rodd" },
+        13: { name: "Todd" },
+      };
+
+      treeMaker(tree, {
+        id: "family-tree",
+        treeParams: treeParams,
+        link_width: "4px",
+        link_color: "#2199e8",
+      });
+    </script>
   </body>
 </html>

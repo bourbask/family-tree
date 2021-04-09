@@ -18,7 +18,7 @@
   text-align: center;
   width: 150px;
   display: inline-block;
-  margin: 0 !important;
+  margin: 0;
 }
 
 #tree__svg-container {

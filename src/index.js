@@ -36,16 +36,16 @@ function treeMaker(tree, params) {
   card.classList = "tree__container__step__card";
   card.id = "tree__container__step__card__first";
   treeContainer.appendChild(card);
-  let trad =
+  let name =
     treeParamas[Object.keys(tree)[0]] !== undefined &&
-    treeParamas[Object.keys(tree)[0]].trad !== undefined
-      ? treeParamas[Object.keys(tree)[0]].trad
-      : Object.keys(tree)[0].trad;
+    treeParamas[Object.keys(tree)[0]].name !== undefined
+      ? treeParamas[Object.keys(tree)[0]].name
+      : Object.keys(tree)[0].name;
   card.innerHTML =
     '<p class="tree__container__step__card__p" id="card_' +
     Object.keys(tree)[0] +
     '">' +
-    trad +
+    name +
     "</p>";
 
   addStyleToCard(treeParamas[Object.keys(tree)[0]], Object.keys(tree)[0]);
@@ -57,13 +57,6 @@ function treeMaker(tree, params) {
   );
 
   connectCard();
-
-  let allCards = document.querySelectorAll(".tree__container__step__card__p");
-  for (let i = 0; allCards.length > i; i++) {
-    allCards[i].addEventListener("click", function (event) {
-      params.card_click(event.target);
-    });
-  }
 
   window.onresize = function () {
     svgDiv.setAttribute("height", "0");
@@ -94,8 +87,8 @@ function iterate(tree, start = false, from = "") {
 
   for (const key in tree) {
     let textCard =
-      treeParamas[key] !== undefined && treeParamas[key].trad !== undefined
-        ? treeParamas[key].trad
+      treeParamas[key] !== undefined && treeParamas[key].name !== undefined
+        ? treeParamas[key].name
         : key;
 
     treeContainer.innerHTML +=
