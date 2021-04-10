@@ -90,15 +90,15 @@ function iterate(tree, start = false, from = "") {
       treeParamas[key] !== undefined && treeParamas[key].name !== undefined
         ? treeParamas[key].name
         : key;
-
-    treeContainer.innerHTML +=
-      '<div class="tree__container__step"><div class="tree__container__step__card" id="' +
-      key +
-      '"><p id="card_' +
-      key +
-      '" class="tree__container__step__card__p">' +
-      textCard +
-      "</p></div></div>";
+    if (document.getElementById("card_" + key) == null)
+      treeContainer.innerHTML +=
+        '<div class="tree__container__step"><div class="tree__container__step__card" id="' +
+        key +
+        '"><p id="card_' +
+        key +
+        '" class="tree__container__step__card__p">' +
+        textCard +
+        "</p></div></div>";
     addStyleToCard(treeParamas[key], key);
     if ("" !== from && !start) {
       let newpath = document.createElementNS(
@@ -122,7 +122,7 @@ function iterate(tree, start = false, from = "") {
       newpath.id = "path" + pathNumber;
       newpath.setAttribute("stroke", strokeColor);
       newpath.setAttribute("fill", "none");
-      newpath.setAttribute("stroke-width", strokeWidth);
+      newpath.setAttribute("stroke-width", 0);
       svgContainer.appendChild(newpath);
       allLinks.push([
         "path" + pathNumber,
