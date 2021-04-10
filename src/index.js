@@ -1,15 +1,25 @@
 let pathNumber = 1;
 let allLinks = [];
 let treeParamas;
+let initialData;
 
 // scg path params
 let strokeWidth = "5px";
+
 let strokeColor = "#000000";
 
-function treeMaker(tree, params) {
-  let container = document.getElementById(params.id);
-  treeParamas = params.treeParams === undefined ? {} : params.treeParams;
+async function getData() {
+  const data = await fetch("../data/persons.json")
+    .then((response) => response.json())
+    .then((parsed) =>
+      parsed.reduce((o, key, index) => ({ ...o, [index]: key }), {})
+    );
+  return await data;
+}
 
+async function treeMaker(tree, params) {
+  let container = document.getElementById(params.id);
+  treeParamas = await getData();
   if (params.link_width !== undefined) strokeWidth = params.link_width;
   if (params.link_color !== undefined) strokeColor = params.link_color;
 
